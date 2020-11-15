@@ -4,8 +4,8 @@
 
 
 /* variables */
-$bgColor: #FFFD;
-$hauteurBarre: 88px;
+$bgColor: #FF0D;
+$hauteurBarre: 68px;
 $breakpointMenu: 768px;
 
 
@@ -14,10 +14,10 @@ $breakpointMenu: 768px;
   background-color: $bgColor;
 }
 
-%hamburgerFixed {
-  width: 60px;
-  height: 60px;
-  position: fixed;
+%hamburgerAbsolute {
+  width: 40px;
+  height: 40px;
+  position: absolute;
   top: 14px;
   right: 28px;
 }
@@ -26,13 +26,14 @@ $breakpointMenu: 768px;
 /* CSS */
 .barreMenu {
   display: flex;
+  align-items: stretch;
+  height: $hauteurBarre;
   @extend %bgNavbar;
 }
 
 .titre {
   display: flex;
   align-items: center;
-  height: $hauteurBarre;
   h1 {
     margin: 0 0 0 28px;
   }
@@ -46,11 +47,12 @@ $breakpointMenu: 768px;
 }
 
 .hamb {
-  @extend %hamburgerFixed;
+  @extend %hamburgerAbsolute;
+  fill: currentColor;
 }
 
 .checkMenu {
-  @extend %hamburgerFixed;
+  @extend %hamburgerAbsolute;
   opacity: 0;
 }
 
@@ -60,14 +62,15 @@ $breakpointMenu: 768px;
   list-style: none;
   flex-direction: column;
   justify-content: space-between;
-  position: fixed;
+  position: absolute;
   top: $hauteurBarre;
   right: 0;
   margin: 0;
   padding: 0;
-  li {
-    margin: 10px 24px;
-    min-width: 116px;
+  li a {
+    display: block;
+    padding: 10px 24px;
+    min-width: 150px;
     text-align: right;
   }
 }
@@ -90,9 +93,10 @@ input[type='checkbox']:checked ~ ul.menu {
     flex-grow: 1;
     width: initial;
     top: initial;
-    li {
+    li a {
       text-align: center;
       min-width: initial;
+      padding: 12px;
     }
   }
 
